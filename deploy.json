@@ -1,0 +1,69 @@
+{
+  "kind": "Deployment",
+  "metadata": {
+    "name": "{{.NAME}}-{{.HASH}}"
+  },
+  "spec": {
+    "replicas": 1,
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "{{.NAME}}-{{.HASH}}"
+        },
+        "name": "{{.NAME}}-{{.HASH}}"
+      },
+      "spec": {
+        "containers": [
+          {
+            "env": [
+              {
+                "name": "MARIADB_USERNAME",
+                "value": "{{.USER}}"
+              },
+              {
+                "name": "MARIADB_INNODB_LARGE_PREFIX",
+                "value": "{{.MARIADB_INNODB_LARGE_PREFIX}}"
+              },
+              {
+                "name": "MARIADB_INNODB_FILE_FORMAT",
+                "value": "{{.MARIADB_INNODB_FILE_FORMAT}}"
+              },
+              {
+                "name": "MARIADB_MAX_ALLOWED_PACKET",
+                "value": "{{.MARIADB_MAX_ALLOWED_PACKET}}"
+              },
+              {
+                "name": "MARIADB_ROOT_PASSWORD",
+                "value": "{{.ROOT_PASS}}"
+              },
+              {
+                "name": "MARIADB_PASSWORD",
+                "value": "{{.PASS}}"
+              }
+           ],
+            "image": "{{.IMAGE}}",
+            "name": "{{.NAME}}",
+            "resources": {
+              "requests": {
+                "cpu": "{{.CPU}}",
+                "memory": "{{.RAM}}"
+              }
+            },
+            "volumeMounts": [
+              {
+                "mountPath": "{{.DATA}}",
+                "name": "{{.VOLUME}}",
+                "subPath": "{{.NAME}}-{{.HASH}}{{.DATA}}"
+              }
+            ]
+          }
+        ],
+        "volumes": [
+          {
+            "name": "{{.VOLUME}}"
+          }
+        ]
+      }
+    }
+  }
+}
