@@ -1,0 +1,27 @@
+{
+  "env": {
+    "IMAGE": "webhippie/mariadb:latest",
+    "PORT": "3306",
+    "NAME": "solution-mariadb",
+    "USER": "mysql",
+    "DATA": "/var/lib/mysql",
+    "HASH": "{{rand_string 5}}",
+    "ROOT_PASS": "{{rand_string 8}}",
+    "PASS": "{{rand_string 8}}",
+    "MARIADB_MAX_ALLOWED_PACKET": "128M",
+    "MARIADB_INNODB_FILE_FORMAT": "Barracuda",
+    "MARIADB_INNODB_LARGE_PREFIX": "ON",
+    "CPU": "500m",
+    "RAM": "512Mi"
+  },
+  "run":[
+    {
+      "type": "deployment",
+      "config_file": "deploy.json"
+    },
+    {
+      "type": "service",
+      "config_file": "service.json"
+    }
+  ]
+}
