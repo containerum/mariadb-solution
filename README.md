@@ -12,7 +12,7 @@ To launch this solution on Containerum.com sign up with the service, download an
 
 1. Run the Solution with `chkit solution`:
 ```
-hkit solution run containerum/MariaDB-solution -e NAME=maria-db -e USER=maria -e PASS=12345678
+chkit solution run containerum/MariaDB-solution -e NAME=maria-db -e USER=maria -e PASS=12345678
 ```
 
 2. Make sure that the Solution is running:
