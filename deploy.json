@@ -1,22 +1,12 @@
 {
-  "kind": "Deployment",
-  "metadata": {
-    "name": "{{.NAME}}-{{.HASH}}"
-  },
-  "spec": {
-    "replicas": 1,
-    "template": {
-      "metadata": {
-        "labels": {
-          "app": "{{.NAME}}-{{.HASH}}"
-        },
-        "name": "{{.NAME}}-{{.HASH}}"
-      },
-      "spec": {
-        "containers": [
-          {
-            "env": [
-              {
+	"containers": [{
+		"image": "{{.IMAGE}}",
+		"name": "{{.NAME}}-{{.HASH}}",
+		"limits": {
+			"cpu": {{.CPU}},
+			"memory": {{.RAM}}
+		},
+		"env": [{
                 "name": "MARIADB_USERNAME",
                 "value": "{{.USER}}"
               },
@@ -40,30 +30,8 @@
                 "name": "MARIADB_PASSWORD",
                 "value": "{{.PASS}}"
               }
-           ],
-            "image": "{{.IMAGE}}",
-            "name": "{{.NAME}}",
-            "resources": {
-              "requests": {
-                "cpu": "{{.CPU}}",
-                "memory": "{{.RAM}}"
-              }
-            },
-            "volumeMounts": [
-              {
-                "mountPath": "{{.DATA}}",
-                "name": "{{.VOLUME}}",
-                "subPath": "{{.NAME}}-{{.HASH}}{{.DATA}}"
-              }
-            ]
-          }
-        ],
-        "volumes": [
-          {
-            "name": "{{.VOLUME}}"
-          }
-        ]
-      }
-    }
-  }
+		]
+	}],
+	"name": "{{.NAME}}-{{.HASH}}",
+	"replicas": 1
 }
