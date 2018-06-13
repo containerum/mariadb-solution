@@ -5,7 +5,7 @@
     "NAME": "solution-mariadb",
     "USER": "mysql",
     "DATA": "/var/lib/mysql",
-    "HASH": "{{rand_string 5}}",
+    "HASH": "{{rand_string_minus 5}}",
     "ROOT_PASS": "{{rand_string 8}}",
     "PASS": "{{rand_string 8}}",
     "MARIADB_MAX_ALLOWED_PACKET": "128M",
