@@ -11,8 +11,8 @@
     "MARIADB_MAX_ALLOWED_PACKET": "128M",
     "MARIADB_INNODB_FILE_FORMAT": "Barracuda",
     "MARIADB_INNODB_LARGE_PREFIX": "ON",
-    "CPU": "500",
-    "RAM": "512"
+    "CPU": "100",
+    "RAM": "128"
   },
   "run":[
     {
